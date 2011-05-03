@@ -1,0 +1,16 @@
+#compiled stuff
+*.exe
+*.dll
+*.obj
+*.o
+*.so
+
+#visual studio specific stuff
+*.tlog
+*.suo
+*.sdf
+*.opensdf
+*.vcxproj.user
+
+#Dependencies
+Dependencies/*
