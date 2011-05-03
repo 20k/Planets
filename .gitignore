@@ -4,6 +4,8 @@
 *.obj
 *.o
 *.so
+Debug/*
+Release/*
 
 #visual studio specific stuff
 *.tlog
@@ -11,6 +13,7 @@
 *.sdf
 *.opensdf
 *.vcxproj.user
+ipch/*
 
 #Dependencies
 Dependencies/*
