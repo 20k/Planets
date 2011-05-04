@@ -3,10 +3,8 @@
 
 Engine* onlyEngine = NULL;
 
-Engine::Engine(unsigned int tickRate, unsigned int FPS)
+Engine::Engine(unsigned int tickRate, unsigned int FPS) : m_tickRate(tickRate), m_FPS(FPS)
 {
-	m_tickRate = tickRate;
-	m_FPS = FPS;
 	onlyEngine = this;
 	assert(onlyEngine==NULL);
 }
@@ -17,7 +15,7 @@ Engine::~Engine()
 	onlyEngine = NULL;
 }
 
-Engine* Engine::getSingleton()
+Engine* Engine::GetSingleton()
 {
 	if(onlyEngine)
 	{
@@ -27,4 +25,9 @@ Engine* Engine::getSingleton()
 	{
 		return NULL;
 	}
+}
+
+void Engine::AddEntityFactory(EntityFactory* factory)
+{
+	m_entityFactories[factory->ClassName()] = factory;
 }

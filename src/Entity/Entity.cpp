@@ -1,4 +1,5 @@
 #include "Entity.h"
+#include "Engine/Engine.h"
 
 Entity::Entity(std::string className) : m_className(className)
 {
@@ -15,7 +16,7 @@ sf::Sprite* Entity::GetSprite()
 	return m_sprite;
 }
 
-std::string Entity::GetClassName()
+std::string Entity::ClassName()
 {
 	return m_className;
 }
@@ -24,16 +25,25 @@ void Entity::Tick()
 {
 }
 
-static EntityFactory<Entity> GenericFactory("generic");
-
-template <class T>
-EntityFactory<T>::EntityFactory(std::string className)
+void* CreateGenericEntity()
 {
-	m_className = className;
+	return (void*)new Entity("generic");
 }
 
-template <class T>
-Entity* EntityFactory<T>::CreateEntity()
+static EntityFactory GenericFactory("generic", CreateGenericEntity);
+
+EntityFactory::EntityFactory(std::string className, CreateEntFunc fnc) : m_className(className), m_fnc(fnc)
 {
-	return static_cast<Entity*>(new T(className));
+	Engine *myEngine = Engine::GetSingleton();
+	myEngine->AddEntityFactory(this);
+}
+
+Entity* EntityFactory::CreateEntity()
+{
+	return (Entity*)m_fnc();
+}
+
+std::string EntityFactory::ClassName()
+{
+	return m_className;
 }

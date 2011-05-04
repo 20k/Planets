@@ -12,7 +12,7 @@ class Entity
 
 		sf::Sprite* GetSprite();
 
-		std::string GetClassName();
+		std::string ClassName();
 
 		virtual void Tick();
 	private:
@@ -21,14 +21,18 @@ class Entity
 		std::string m_className;
 };
 
-template <class T>
+typedef void* (*CreateEntFunc)();
 class EntityFactory
 {
 	public:
-		EntityFactory(std::string className);
+		EntityFactory(std::string className, CreateEntFunc fnc);
+
 		Entity* CreateEntity();
+
+		std::string ClassName();
 	private:
 		std::string m_className;
+		CreateEntFunc m_fnc;
 };
 
 #endif
