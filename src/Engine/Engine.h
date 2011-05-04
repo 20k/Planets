@@ -13,6 +13,8 @@ class Engine
 
 		static Engine* GetSingleton();
 
+		Entity* CreateEntity(std::string className);
+		
 	private:
 		friend class EntityFactory;
 		void AddEntityFactory(EntityFactory* factory);

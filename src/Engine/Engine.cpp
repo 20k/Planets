@@ -31,3 +31,16 @@ void Engine::AddEntityFactory(EntityFactory* factory)
 {
 	m_entityFactories[factory->ClassName()] = factory;
 }
+
+Entity* Engine::CreateEntity(std::string className)
+{
+	EntityFactory *factory = m_entityFactories[className];
+	if(factory!=NULL)
+	{
+		return factory->CreateEntity();
+	}
+	else
+	{
+		return NULL;
+	}
+}
