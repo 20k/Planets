@@ -1,12 +1,11 @@
 // Planets.cpp : Defines the entry point for the console application.
 //
 
-#include "Engine\Engine.h"
+#include "Entity/Entity.h"
 
 int main(int argc, char* argv[])
 {
-	Engine* engine = Engine::getSingleton();
-	Engine* engine2 = Engine::getSingleton();
+	Entity *lol = new Entity();
 	return 0;
 }
 

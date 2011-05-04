@@ -39,12 +39,12 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SolutionDir)\Dependencies\SFML2\include;$(SolutionDir);$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\Dependencies\SFML2\include;$(SolutionDir)\src;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\Dependencies\SFML2\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SolutionDir)\Dependencies\SFML2\include;$(SolutionDir);$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\Dependencies\SFML2\include;$(SolutionDir)\src;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)\Dependencies\SFML2\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -81,10 +81,14 @@
   <ItemGroup>
     <ClCompile Include="src/Engine\Engine.cpp" />
     <ClCompile Include="src/main.cpp" />
+    <ClCompile Include="src\Engine\EntityMgr.cpp" />
+    <ClCompile Include="src\Entity\Entity.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src/Engine\Engine.h" />
     <ClInclude Include="src/Global.h" />
+    <ClInclude Include="src\Engine\EntityMgr.h" />
+    <ClInclude Include="src\Entity\Entity.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

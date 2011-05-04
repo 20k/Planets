@@ -3,8 +3,11 @@
 
 Engine* onlyEngine = NULL;
 
-Engine::Engine()
+Engine::Engine(unsigned int tickRate, unsigned int FPS)
 {
+	m_tickRate = tickRate;
+	m_FPS = FPS;
+	onlyEngine = this;
 	assert(onlyEngine==NULL);
 }
 
@@ -22,7 +25,6 @@ Engine* Engine::getSingleton()
 	}
 	else
 	{
-		onlyEngine = new Engine();
-		return onlyEngine;
+		return NULL;
 	}
 }
