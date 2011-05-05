@@ -8,20 +8,23 @@
 class Engine
 {
 	public:
-		Engine(unsigned int tickRate = 33, unsigned int FPS = 60);
+		Engine(const unsigned int &tickRate = 33, const unsigned int &FPS = 60);
 		~Engine();
 
 		static Engine* GetSingleton();
 
-		Entity* CreateEntity(std::string className);
+		Entity* CreateEntity(const std::string &className);
 		
 	private:
 		friend class EntityFactory;
-		void AddEntityFactory(EntityFactory* factory);
+		static void AddEntityFactory(EntityFactory* factory);
+		void AddEntityFactory2(EntityFactory* factory);
 
 		unsigned int m_tickRate;
 		unsigned int m_FPS;
 		std::map<std::string, EntityFactory*> m_entityFactories;
+
+		float m_fTime;
 };
 
 #endif

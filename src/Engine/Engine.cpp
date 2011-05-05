@@ -3,10 +3,13 @@
 
 Engine* onlyEngine = NULL;
 
-Engine::Engine(unsigned int tickRate, unsigned int FPS) : m_tickRate(tickRate), m_FPS(FPS)
+std::map<std::string, EntityFactory*> entityFactories;
+
+Engine::Engine(const unsigned int &tickRate, const unsigned int &FPS) : m_tickRate(tickRate), m_FPS(FPS), m_fTime(0), m_entityFactories(entityFactories)
 {
-	onlyEngine = this;
 	assert(onlyEngine==NULL);
+	onlyEngine = this;
+	entityFactories.clear();
 }
 
 Engine::~Engine()
@@ -29,10 +32,23 @@ Engine* Engine::GetSingleton()
 
 void Engine::AddEntityFactory(EntityFactory* factory)
 {
-	m_entityFactories[factory->ClassName()] = factory;
+	Engine* myEngine = GetSingleton();
+	if(myEngine==NULL)
+	{
+		entityFactories[factory->ClassName()] = factory;
+	}
+	else
+	{
+		myEngine->AddEntityFactory2(factory);
+	}
 }
 
-Entity* Engine::CreateEntity(std::string className)
+void Engine::AddEntityFactory2(EntityFactory* factory)
+{
+	entityFactories[factory->ClassName()] = factory;
+}
+
+Entity* Engine::CreateEntity(const std::string &className)
 {
 	EntityFactory *factory = m_entityFactories[className];
 	if(factory!=NULL)

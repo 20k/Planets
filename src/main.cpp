@@ -2,10 +2,12 @@
 //
 
 #include "Entity/Entity.h"
+#include "Engine/Engine.h"
 
 int main(int argc, char* argv[])
 {
-	Entity *lol = new Entity();
+	Engine *myEngine = new Engine();
+	Entity *lol = myEngine->CreateEntity("generic");
 	return 0;
 }
 

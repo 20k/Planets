@@ -1,9 +1,8 @@
 #include "Entity.h"
 #include "Engine/Engine.h"
 
-Entity::Entity(std::string className) : m_className(className)
+Entity::Entity(std::string className) : m_className(className), m_sprite(new sf::Sprite())
 {
-	m_sprite = new sf::Sprite();
 }
 
 Entity::~Entity()
@@ -34,8 +33,7 @@ static EntityFactory GenericFactory("generic", CreateGenericEntity);
 
 EntityFactory::EntityFactory(std::string className, CreateEntFunc fnc) : m_className(className), m_fnc(fnc)
 {
-	Engine *myEngine = Engine::GetSingleton();
-	myEngine->AddEntityFactory(this);
+	Engine::AddEntityFactory(this);
 }
 
 Entity* EntityFactory::CreateEntity()
