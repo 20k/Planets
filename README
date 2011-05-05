@@ -1,1 +1,18 @@
 Rewrite and expansion of Icedshot's Planets game.
+
+If you want to contribute read the TODO
+Do the numbered things in order
+
+TODO: 
+
+Make space entities:
+1. Star entity, classname "star"
+1a. must have mass and radius
+1b. must have temperature and color that is generated from the temperature
+2. Planet entity, classname "planet"
+2a. If not a stray planet, must be parented to a star/planet
+2b. If not a stray planet, must have parameters for an ellipse orbit around it's parent
+2c. Must have mass and radius, if mass is below a certain threshold, it is a moon, and not a planet
+
+Rendering:
+I'll handle this for now
