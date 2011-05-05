@@ -20,9 +20,15 @@ class Engine
 		static void AddEntityFactory(EntityFactory* factory);
 		void AddEntityFactory2(EntityFactory* factory);
 
+		friend class Entity;
+		unsigned int HiEntity(Entity* hiEnt);
+		void ByeEntity(Entity* byeEnt);
+
 		unsigned int m_tickRate;
 		unsigned int m_FPS;
+
 		std::map<std::string, EntityFactory*> m_entityFactories;
+		std::vector<Entity*> m_entList;
 
 		float m_fTime;
 };

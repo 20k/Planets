@@ -1,12 +1,15 @@
 #include "Entity.h"
 #include "Engine/Engine.h"
 
-Entity::Entity(std::string className) : m_className(className), m_sprite(new sf::Sprite())
+Entity::Entity(const std::string &className) : m_className(className), m_sprite(new sf::Sprite())
 {
+	Engine* myEngine = Engine::GetSingleton();
+	m_entID = myEngine->HiEntity(this);
 }
 
 Entity::~Entity()
 {
+	Engine::GetSingleton()->ByeEntity(this);
 	delete m_sprite;
 }
 
@@ -18,6 +21,11 @@ sf::Sprite* Entity::GetSprite()
 std::string Entity::ClassName()
 {
 	return m_className;
+}
+
+unsigned int Entity::GetID()
+{
+	return m_entID;
 }
 
 void Entity::Tick()

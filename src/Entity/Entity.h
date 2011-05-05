@@ -7,18 +7,22 @@
 class Entity
 {
 	public:
-		Entity(std::string className = "generic");
+		Entity(const std::string &className = "generic");
 		virtual ~Entity();
 
 		sf::Sprite* GetSprite();
 
 		std::string ClassName();
 
+		unsigned int GetID();
+
 		virtual void Tick();
 	private:
 		sf::Sprite *m_sprite;
 
 		std::string m_className;
+
+		unsigned int m_entID;
 };
 
 typedef void* (*CreateEntFunc)();
