@@ -15,6 +15,3 @@ Make space entities:
 2a. If not a stray planet, must be parented to a star/planet
 2b. If not a stray planet, must have parameters for an ellipse orbit around it's parent
 2c. Must have mass and radius, if mass is below a certain threshold, it is a moon, and not a planet
-
-Rendering:
-I'll handle this for now
