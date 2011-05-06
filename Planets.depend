@@ -1,0 +1,35 @@
+# depslib dependency file v1.0
+1304722991 source:c:\users\james\desktop\planets\src\engine\resourcemgr.cpp
+	"ResourceMgr.h"
+
+1304722991 c:\users\james\desktop\planets\src\engine\resourcemgr.h
+	<SFML/Graphics.hpp>
+	<map>
+
+1304722991 source:c:\users\james\desktop\planets\src\entity\entity.cpp
+	"Entity.h"
+	"Engine/Engine.h"
+
+1304722991 c:\users\james\desktop\planets\src\entity\entity.h
+	<SFML/Graphics.hpp>
+	<string>
+
+1304724669 c:\users\james\desktop\planets\src\engine\engine.h
+	"Global.h"
+	"Entity/Entity.h"
+	<map>
+	<string>
+	<SFML/Graphics.hpp>
+	"ResourceMgr.h"
+
+1304722991 c:\users\james\desktop\planets\src\global.h
+
+1304722991 source:c:\users\james\desktop\planets\src\main.cpp
+	"Entity/Entity.h"
+	"Engine/Engine.h"
+
+1304722991 source:c:\users\james\desktop\planets\src\engine\engine.cpp
+	"Engine.h"
+	<cassert>
+	<SFML/System.hpp>
+

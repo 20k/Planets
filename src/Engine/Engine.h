@@ -28,7 +28,7 @@ class Engine
 		void Shutdown();
 
 		ResourceMgr* GetResourceMgr();
-		
+
 	private:
 		friend class EntityFactory;
 		static void AddEntityFactory(EntityFactory* factory);
