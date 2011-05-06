@@ -36,6 +36,9 @@
     <ClCompile Include="src\Entity\Entity.cpp">
       <Filter>Source Files\Entity</Filter>
     </ClCompile>
+    <ClCompile Include="src\Engine\ResourceMgr.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src/Engine\Engine.h">
@@ -46,6 +49,9 @@
     </ClInclude>
     <ClInclude Include="src\Entity\Entity.h">
       <Filter>Header Files\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Engine\ResourceMgr.h">
+      <Filter>Header Files\Engine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

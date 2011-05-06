@@ -5,6 +5,7 @@
 #include <map>
 #include <string>
 #include <SFML/Graphics.hpp>
+#include "ResourceMgr.h"
 
 class Engine
 {
@@ -25,6 +26,8 @@ class Engine
 		bool IsRunning();
 
 		void Shutdown();
+
+		ResourceMgr* GetResourceMgr();
 		
 	private:
 		friend class EntityFactory;
@@ -50,6 +53,8 @@ class Engine
 		sf::Shader *m_gShader;
 
 		bool m_isRunning;
+
+		ResourceMgr *m_rsrcMgr;
 };
 
 #endif

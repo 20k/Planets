@@ -9,7 +9,8 @@ std::map<std::string, EntityFactory*> entityFactories;
 static sf::Clock globalClock;
 
 Engine::Engine(const unsigned int &tickRate, const unsigned int &FPS) : m_tickRate(tickRate), m_FPS(FPS), m_fTimeOfLastTick(0), 
-	m_entityFactories(entityFactories), m_entList(), m_fTimeOfLastRender(0), m_gShader(NULL), m_isRunning(true)
+	m_entityFactories(entityFactories), m_entList(), m_fTimeOfLastRender(0), m_gShader(NULL), m_isRunning(true),
+	m_rsrcMgr(new ResourceMgr())
 {
 	assert(onlyEngine==NULL);
 	onlyEngine = this;
@@ -35,6 +36,7 @@ Engine::~Engine()
 			m_entList[i] = NULL;
 		}
 	}
+	delete m_rsrcMgr;
 }
 
 Engine* Engine::GetSingleton()
@@ -158,6 +160,7 @@ void Engine::Render()
 		}
 	}
 	static sf::Sprite renderSpr(m_renderTex->GetImage());
+	m_renderTex->Display();
 	if(m_gShader!=NULL)
 	{
 		m_app->Draw(renderSpr, *m_gShader);
@@ -166,6 +169,7 @@ void Engine::Render()
 	{
 		m_app->Draw(renderSpr);
 	}
+	m_app->Display();
 }
 
 bool Engine::IsRunning()
@@ -176,4 +180,9 @@ bool Engine::IsRunning()
 void Engine::Shutdown()
 {
 	m_isRunning = false;
+}
+
+ResourceMgr* Engine::GetResourceMgr()
+{
+	return m_rsrcMgr;
 }
