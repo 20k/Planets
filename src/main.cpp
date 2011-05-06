@@ -7,7 +7,18 @@
 int main(int argc, char* argv[])
 {
 	Engine *myEngine = new Engine();
-	Entity *lol = myEngine->CreateEntity("generic");
+	while(myEngine->IsRunning())
+	{
+		if(myEngine->ShouldTick())
+		{
+			myEngine->Tick();
+		}
+		if(myEngine->ShouldRender())
+		{
+			myEngine->Render();
+		}
+	}
+	delete myEngine;
 	return 0;
 }
 

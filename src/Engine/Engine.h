@@ -4,6 +4,7 @@
 #include "Entity/Entity.h"
 #include <map>
 #include <string>
+#include <SFML/Graphics.hpp>
 
 class Engine
 {
@@ -14,6 +15,16 @@ class Engine
 		static Engine* GetSingleton();
 
 		Entity* CreateEntity(const std::string &className);
+
+		bool ShouldTick();
+		bool ShouldRender();
+
+		void Tick();
+		void Render();
+
+		bool IsRunning();
+
+		void Shutdown();
 		
 	private:
 		friend class EntityFactory;
@@ -30,7 +41,15 @@ class Engine
 		std::map<std::string, EntityFactory*> m_entityFactories;
 		std::vector<Entity*> m_entList;
 
-		float m_fTime;
+		float m_fTimeOfLastTick;
+		float m_fTimeOfLastRender;
+
+		sf::RenderWindow *m_app;
+		sf::RenderImage *m_renderTex;
+
+		sf::Shader *m_gShader;
+
+		bool m_isRunning;
 };
 
 #endif
