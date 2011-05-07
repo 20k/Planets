@@ -73,7 +73,7 @@ unsigned int Engine::HiEntity(Entity* hiEnt)
 {
 	for(unsigned int i = 0; i < m_entList.size(); i++)
 	{
-		if(m_entList[i] = NULL)
+		if(m_entList[i] == NULL)
 		{
 			m_entList[i] = hiEnt;
 			return i;
