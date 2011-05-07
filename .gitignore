@@ -15,6 +15,9 @@ Release/*
 *.vcxproj.user
 ipch/*
 
+#c::b
+gmon.out
+
 #Dependencies
 Dependencies/*
 !Dependencies/readme.txt
